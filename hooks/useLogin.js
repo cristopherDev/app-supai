@@ -16,7 +16,10 @@ function useLogin () {
         setLoading(true);
 
         if (email === 'demo_supai@gmail.com' && password === 'secret2022') {
+            localStorage.setItem('user', email);
+
             router.push('/main');
+            
             setLoading(false);
         }
     }

@@ -1,10 +1,22 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Layout, Menu, Typography } from 'antd';
 import dayjs from 'dayjs';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 
 const LayoutMain = (props) => {
+    const router = useRouter();
+
+    useEffect(() => {
+        let check = sessionStorage.getItem('checkUser');
+
+        if (!check) {
+            router.push('/');
+        }
+    }, []);
+
     return (
         <Layout style={ Styles.layoutBody }>
             <Layout>
@@ -13,8 +25,8 @@ const LayoutMain = (props) => {
                         mode="inline" 
                         style={{ height: '100%', borderRight: 0 }}
                     >
-                        <Menu.Item>
-                            <Title level={5}>Menu</Title>
+                        <Menu.Item key="0">
+                            <Title level={5}>SUPAI / Menu</Title>
                         </Menu.Item>
                         <Menu.Item key="1">
                         Principal
